@@ -1,0 +1,38 @@
+body.admin-console {
+  background: #efefef none;
+}
+
+.container {
+  padding: 0;
+}
+
+.container h2 {
+  text-align: center;
+}
+
+div#kc-header {
+  padding-bottom: 20px;
+}
+
+div.kc-logo-text {
+  background-image: url(../img/logo.png);
+  background-repeat: no-repeat;
+  background-size: contain;
+  height: 160px;
+  width: 160px;
+  margin: 0 auto;
+}
+
+div.kc-logo-text span {
+  display: none;
+}
+
+div#kc-header-wrapper {
+  padding: 0;
+  margin-top: 50px;
+}
+
+div.kc-body-container {
+  padding-left: 30px;
+  padding-right: 30px;
+}

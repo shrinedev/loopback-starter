@@ -1,0 +1,40 @@
+version: '3'
+
+services:
+  keycloak:
+    image: jboss/keycloak:6.0.1
+    restart: on-failure
+    command:
+      - '-b'
+      - '0.0.0.0'
+      - '-Dkeycloak.migration.action=import'
+      - '-Dkeycloak.migration.provider=dir'
+      - '-Dkeycloak.migration.dir=/config/'
+      - '-Dkeycloak.migration.strategy=IGNORE_EXISTING'
+    volumes:
+      - ./keycloak/config:/config/
+      - ./keycloak/themes/example_app:/opt/jboss/keycloak/themes/example_app
+    environment:
+      - KEYCLOAK_USER=admin
+      - KEYCLOAK_PASSWORD=Password1
+      - DB_VENDOR=postgres
+      - DB_USER=admin
+      - DB_PASSWORD=password
+      - DB_ADDR=postgres
+      - DB_PORT=5432
+      - DB_DATABASE=example_app
+    ports:
+      - '8888:8080'
+    depends_on:
+      - postgres
+  postgres:
+    build:
+      context: ./postgres
+    container_name: 'example_app_postgres'
+    environment:
+      - POSTGRES_USER=admin
+      - POSTGRES_PASSWORD=password
+      - POSTGRES_DB=example_app
+    restart: 'always'
+    ports:
+      - '5432:5432'
