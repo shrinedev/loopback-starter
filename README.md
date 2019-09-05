@@ -13,6 +13,7 @@ Built with Loopback 4, NextJS, Keycloak, Postgres, and more.
 - Joi validation schemas shared between server and client code
 - Instant deploy with Heroku
 - Environment variable support on server and client
+- Provides endpoint for uploading files to AWS S3 storage.
 
 ## Starting the Keycloak Server and Postgres Database
 
