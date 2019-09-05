@@ -2,6 +2,18 @@
 
 Built with Loopback 4, NextJS, Keycloak, Postgres, and more.
 
+## Features included:
+
+- NextJS integration with zero-config SSR
+- End-to-end API testing
+- User authentication (cookie or token based)
+- Protect endpoints based on user roles with Loopback interceptors
+- Customizable email templates for email verification, forgot password, etc.
+- Dockerized DB and Auth server for local development
+- Joi validation schemas shared between server and client code
+- Instant deploy with Heroku
+- Environment variable support on server and client
+
 ## Starting the Keycloak Server and Postgres Database
 
 ```console
