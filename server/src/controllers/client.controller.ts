@@ -16,19 +16,25 @@ export class AdminClientController {
 
   @intercept(check())
   @get('/home')
-  async home(user: KeycloakUser | null): Promise<void> {
+  async home(
+    @inject(AppBindings.KEYCLOAK_USER) user: KeycloakUser | null
+  ): Promise<void> {
     await this.nextServer.render(this.req, this.res, '/home', { user });
   }
 
   @intercept(protect())
   @get('/dashboard')
-  async dashboard(user: KeycloakUser): Promise<void> {
+  async dashboard(
+    @inject(AppBindings.KEYCLOAK_USER) user: KeycloakUser
+  ): Promise<void> {
     await this.nextServer.render(this.req, this.res, '/dashboard', { user });
   }
 
   @intercept(protect('admin'))
   @get('/admin/dashboard')
-  async adminDashboard(user: KeycloakUser): Promise<void> {
+  async adminDashboard(
+    @inject(AppBindings.KEYCLOAK_USER) user: KeycloakUser
+  ): Promise<void> {
     await this.nextServer.render(this.req, this.res, '/adminDashboard', {
       user
     });
@@ -37,10 +43,4 @@ export class AdminClientController {
   @intercept(check())
   @get('/logout')
   async logout(): Promise<void> {}
-
-  @intercept(check())
-  @get('/test1')
-  async test1(): Promise<any> {
-    return { test: true };
-  }
 }

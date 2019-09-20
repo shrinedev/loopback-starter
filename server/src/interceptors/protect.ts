@@ -1,5 +1,6 @@
 import { Interceptor } from '@loopback/core';
 import { getReqRes, getKeycloak, prepare, extractKeycloakUser } from './utils';
+import { AppBindings } from '../keys';
 
 const protect = (role?: string): Interceptor => async (invocationCtx, next) => {
   await prepare(invocationCtx);
@@ -10,7 +11,8 @@ const protect = (role?: string): Interceptor => async (invocationCtx, next) => {
       if (err) {
         reject(err);
       }
-      invocationCtx.args[0] = extractKeycloakUser(req);
+      const user = extractKeycloakUser(req);
+      invocationCtx.bind(AppBindings.KEYCLOAK_USER).to(user);
       resolve(next());
     });
   });
