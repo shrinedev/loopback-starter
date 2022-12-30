@@ -30,7 +30,7 @@
   "dependencies": {
     "@babel/core": "^7.5.5",
     "@loopback/boot": "^1.5.3",
-    "@loopback/build": "^2.0.8",
+    "@loopback/build": "^9.0.6",
     "@loopback/context": "^1.21.4",
     "@loopback/core": "^1.9.3",
     "@loopback/eslint-config": "^4.0.1",
